@@ -1,8 +1,9 @@
-package com.hackathon.responseservice;
+package com.hackathon.responseservice.service;
 
+import com.hackathon.responseservice.entity.Response;
+import com.hackathon.responseservice.repository.ResponseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -29,7 +30,7 @@ public class ResponseService {
 
     public Response addResponseToTicket(Long ticket_id, Response response) {
         response.setTicket_id(ticket_id);
-        restTemplate().put("http://localhost:8081/tickets/"+ticket_id,response);
+        restTemplate().put("http://tickets-service-fred555-dev.apps.sandbox.x8i5.p1.openshiftapps.com/tickets/"+"/"+ticket_id,response);
         return repository.save(response);
     }
 
